@@ -4,10 +4,10 @@ import random
 
 def print_message(message):
     print(message)
-    time.sleep(2)
+    #time.sleep(2)
 
 
-def intro(item, choices):
+def field(item, choices):
     print_message("You find yourself standing in an open field,"
                   " filled with grass and yellow wildflowers.")
     print_message("Rumor has it that a " + choices +
@@ -16,7 +16,7 @@ def intro(item, choices):
     print_message("To your right is a dark cave.")
     print_message("In your hand you hold your trusty"
                   " (but not very effective) dagger.")
-    again(item, choices)
+    fight(item, choices)
 
 
 def restart(item, choices):
@@ -28,23 +28,20 @@ def restart(item, choices):
         print_message("Thanks for Playing. Have a Nice Day!!!!")
 
 
-def again(item, choices):
+def fight(item, choices):
     print_message("Enter 1 to knock on the door of the house.")
     print_message("Enter 2 to peer into the cave.")
     print_message("What would you like to do?")
     while True:
-        repeat(item, choices)
-
-
-def repeat(item, choices):
-    response = input("please say 1 or 2\n")
-    if response == "1":
-        house(item, choices)
-    elif response == "2":
-        cave(item, choices)
-    else:
-        repeat(item, choices)
-        
+        response = input("please say 1 or 2\n")
+        if response == "1":
+            house(item, choices)
+            break
+        elif response == "2":
+            cave(item, choices)
+            break
+        else:
+            response = input("please say 1 or 2\n")
 
 
 def house(item, choices):
@@ -80,7 +77,7 @@ def house(item, choices):
         elif respond == "2":
             print_message("You run back into the field."
                           " Luckily, you don't seem to have been followed.")
-            again(item, choices)
+            fight(item, choices)
         break
 
 
@@ -98,13 +95,13 @@ def cave(item, choices):
                       "and take the sword with you.")
         print_message("You walk back out to the field.")
         item.append("sword")
-    again(item, choices)
+    fight(item, choices)
 
 
 def start():
     choices = random.choice(["dragon", "Fly", "troll", "ghost"])
     item = []
-    intro(item, choices)
+    field(item, choices)
 
 
 start()
