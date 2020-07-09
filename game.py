@@ -22,7 +22,7 @@ def intro(item, choices):
 def restart(item, choices):
     option = input("Would you like to play again? (y/n)").lower()
     if option == "y":
-        print_message("Excellent! Restarting the game ...")
+        print_message("Excellent! Restarting the game ...\n\n\n")
         start()
     elif option == "n":
         print_message("Thanks for Playing. Have a Nice Day!!!!")
@@ -33,16 +33,18 @@ def again(item, choices):
     print_message("Enter 2 to peer into the cave.")
     print_message("What would you like to do?")
     while True:
-        response = input("please say 1 or 2\n")
-        if response == "1":
-            house(item, choices)
-            break
-        elif response == "2":
-            cave(item, choices)
-            break
-        else:
-            print_message("sorry i don't understand")
-            again(item, choices)
+        repeat(item, choices)
+
+
+def repeat(item, choices):
+    response = input("please say 1 or 2\n")
+    if response == "1":
+        house(item, choices)
+    elif response == "2":
+        cave(item, choices)
+    else:
+        repeat(item, choices)
+        
 
 
 def house(item, choices):
