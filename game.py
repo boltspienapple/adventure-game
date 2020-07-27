@@ -4,7 +4,7 @@ import random
 
 def print_message(message):
     print(message)
-    #time.sleep(2)
+    time.sleep(2)
 
 
 def field(item, choices):
